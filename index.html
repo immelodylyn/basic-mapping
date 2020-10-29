@@ -47,44 +47,52 @@
 		zoomOffset: -1
 	}).addTo(mymap);
 
-    var welfareroom = L.icon({
-    iconUrl: 'welfareroom.png',
-    iconSize: [32, 37],
-    iconAnchor: [16, 37], //Left , Top
-    popupAnchor: [0, -30], //iconArchor
-});
+    var geojson = {"type": "FeatureCollection","features": [{"type": "Feature","properties": {},"geometry": {"type": "LineString","coordinates": [[121.0108208656311,14.597849465043812],[121.0098123550415,14.596728152775574],[121.01073503494263,14.596125964198755],[121.01264476776122,14.598389354097577],[121.01187229156494,14.599282244624927]]}},{"type": "Feature","properties": {},"geometry": {"type": "Polygon","coordinates": [[[121.00916862487793,14.599697541309752],[121.00811719894409,14.59818170461832],[121.01088523864746,14.59884618226203],[121.00916862487793,14.599697541309752]]]}},{"type": "Feature","properties": {},"geometry": {"type": "Polygon","coordinates": [[[121.01311683654785,14.599925954152198],[121.01352453231812,14.597828700053743],[121.01536989212036,14.598140174698932],[121.01311683654785,14.599925954152198]]]}},{"type": "Feature","properties": {},"geometry": {"type": "Point","coordinates": [121.00826740264893,14.596562031953482]}}]}
+  
+    L.geoJson(geojson, {
+        style: function (feature) {
+        return {color: '#661F85'};
+    }
+    }).addTo(mymap);
 
-    var popup = "<img src='https://via.placeholder.com/350x150' style='max-width:250px;' />";
+//     var welfareroom = L.icon({
+//     iconUrl: 'welfareroom.png',
+//     iconSize: [32, 37],
+//     iconAnchor: [16, 37], //Left , Top
+//     popupAnchor: [0, -30], //iconArchor
+// });
 
-	L.marker([14.61789099501807, 1201.010799407959], {icon: welfareroom}).addTo(mymap)
-		.bindPopup(popup);
+//     var popup = "<img src='https://via.placeholder.com/350x150' style='max-width:250px;' />";
 
-        var shapeStyle = {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5 ,
-        weight: 2
-	};
+// 	L.marker([14.61789099501807, 1201.010799407959], {icon: welfareroom}).addTo(mymap)
+// 		.bindPopup(popup);
 
-	L.circle([14.59789099501807, 1201.010799407959], 1000, shapeStyle).addTo(mymap).bindPopup("I am a circle.");
+//         var shapeStyle = {
+// 		color: 'red',
+// 		fillColor: '#f03',
+// 		fillOpacity: 0.5 ,
+//         weight: 2
+// 	};
 
-	L.polygon([
-        [14.57789099501807, 1201.010799407959],
-		[14.59789099501807, 1201.000799407959],
-		[14.57789099501807, 1201.000799407959]
-	], shapeStyle).addTo(mymap).bindPopup("I am a polygon.");
+// 	L.circle([14.59789099501807, 1201.010799407959], 1000, shapeStyle).addTo(mymap).bindPopup("I am a circle.");
+
+// 	L.polygon([
+//         [14.57789099501807, 1201.010799407959],
+// 		[14.59789099501807, 1201.000799407959],
+// 		[14.57789099501807, 1201.000799407959]
+// 	], shapeStyle).addTo(mymap).bindPopup("I am a polygon.");
 
 
-	var popup = L.popup();
+// 	var popup = L.popup();
 
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(mymap);
-	}
+// 	function onMapClick(e) {
+// 		popup
+// 			.setLatLng(e.latlng)
+// 			.setContent("You clicked the map at " + e.latlng.toString())
+// 			.openOn(mymap);
+// 	}
 
-	mymap.on('click', onMapClick);
+// 	mymap.on('click', onMapClick);
 
 </script>
 
