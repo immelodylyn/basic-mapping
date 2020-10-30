@@ -49,11 +49,25 @@
 
     var geojson = {"type": "FeatureCollection","features": [{"type": "Feature","properties": {},"geometry": {"type": "LineString","coordinates": [[121.0108208656311,14.597849465043812],[121.0098123550415,14.596728152775574],[121.01073503494263,14.596125964198755],[121.01264476776122,14.598389354097577],[121.01187229156494,14.599282244624927]]}},{"type": "Feature","properties": {},"geometry": {"type": "Polygon","coordinates": [[[121.00916862487793,14.599697541309752],[121.00811719894409,14.59818170461832],[121.01088523864746,14.59884618226203],[121.00916862487793,14.599697541309752]]]}},{"type": "Feature","properties": {},"geometry": {"type": "Polygon","coordinates": [[[121.01311683654785,14.599925954152198],[121.01352453231812,14.597828700053743],[121.01536989212036,14.598140174698932],[121.01311683654785,14.599925954152198]]]}},{"type": "Feature","properties": {},"geometry": {"type": "Point","coordinates": [121.00826740264893,14.596562031953482]}}]}
   
+    var welfareroom = L.icon({
+        iconUrl: 'welfareroom.png',
+        iconSize: [32, 37],
+        iconAnchor: [16, 37], //Left , Top
+        popupAnchor: [0, -30], //iconArchor
+    });
     L.geoJson(geojson, {
         style: function (feature) {
         return {color: '#661F85'};
+    }, 
+    pointToLayer: function(geoJsonPoint, latlng) {
+        return L.marker(latlng, {icon: welfareroom});
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.geometry.type === 'Point'){
+            layer.bindPopup('im a point')
+        }
     }
-    }).addTo(mymap);
+    }).bindPopup("hello").addTo(mymap);
 
 //     var welfareroom = L.icon({
 //     iconUrl: 'welfareroom.png',
